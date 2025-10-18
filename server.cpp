@@ -420,9 +420,24 @@ void CList ::ReverseDisplay()
     
     cout << endl;
 }
+
 void CList ::PhysicalReverse()
 {
+    CNode *pPrev = m_pHead->m_pPrev;
+    CNode *pCurrent = m_pHead;
+    CNode *pNext = m_pHead->m_pNext;
 
+    do
+    {
+        pNext = pCurrent->m_pNext;
+        pCurrent->m_pNext = pPrev;
+        pCurrent->m_pPrev = pNext;
+        pPrev = pCurrent;
+        pCurrent = pNext;
+    } while(pCurrent != m_pHead);
+
+    m_pHead = pPrev;
+    m_pTail = pNext;
 }
 
 void CList ::DeleteAll()
