@@ -67,40 +67,40 @@ int main(void)
 
     oList1.PhysicalReverse();
     oList1.Display();                                           // >|50|->|20|->|30|->|20|-
-    // oList1.PhysicalReverse();
-    // oList1.Display();                                           // >|20|->|30|->|20|->|50|-
+    oList1.PhysicalReverse();
+    oList1.Display();                                           // >|20|->|30|->|20|->|50|-
 
-    // oList1.ReverseDisplay();                                    // >|50|->|20|->|30|->|20|-
-    // oList1.Display();                                           // >|20|->|30|->|20|->|50|-
+    oList1.ReverseDisplay();                                    // >|50|->|20|->|30|->|20|-
+    oList1.Display();                                           // >|20|->|30|->|20|->|50|-
 
-    // CList oList2;
-    // oList2.InsertAtLast(100);
-    // oList2.InsertAtLast(200);
-    // oList2.Display();                                           // >|100|->|200|-
-    // oList1.ConcatLists(oList2);
-    // oList1.Display();                                           // >|20|->|30|->|20|->|50|->|100|->|200|-
-    // oList2.Display();                                           // List is Empty
+    CList oList2;
+    oList2.InsertAtLast(100);
+    oList2.InsertAtLast(200);
+    oList2.Display();                                           // >|100|->|200|-
+    oList1.ConcatLists(oList2);
+    oList1.Display();                                           // >|20|->|30|->|20|->|50|->|100|->|200|-
+    oList2.Display();                                           // List is Empty
 
-    // oList2.InsertAtLast(400);
-    // oList2.InsertAtLast(500);
-    // oList1.Display();                                           // |20|->|30|->|20|->|50|->|100|->|200|- 
-    // oList2.Display();                                           // >|400|->|500|-
-    // oList1.ConcatAtPosition(oList2, 7);
-    // oList1.Display();                                           // >|20|->|30|->|400|->|500|->|20|->|50|->|100|->|200|-
-    // oList2.Display();                                           // List is Empty
+    oList2.InsertAtLast(400);
+    oList2.InsertAtLast(500);
+    oList1.Display();                                           // |20|->|30|->|20|->|50|->|100|->|200|- 
+    oList2.Display();                                           // >|400|->|500|-
+    oList1.ConcatAtPosition(oList2, 7);
+    oList1.Display();                                           // >|20|->|30|->|400|->|500|->|20|->|50|->|100|->|200|-
+    oList2.Display();                                           // List is Empty
 
-    // oList1.InsertAtLast(1000);
-    // oList1.InsertAtLast(2000);
-    // oList1.Display();           
-    // oList2.InsertAtLast(33330);
-    // oList2.InsertAtLast(22200);
-    // oList2.Display();  
+    oList1.InsertAtLast(1000);
+    oList1.InsertAtLast(2000);
+    oList1.Display();           
+    oList2.InsertAtLast(33330);
+    oList2.InsertAtLast(22200);
+    oList2.Display();  
 
-    // oList1.DeleteAll();
-    // oList2.DeleteAll();
+    oList1.DeleteAll();
+    oList2.DeleteAll();
 
-    // oList1.Display();                                           // List is Empty
-    // oList2.Display();                                           // List is Empty
+    oList1.Display();                                           // List is Empty
+    oList2.Display();                                           // List is Empty
 
     return 0;
 }
