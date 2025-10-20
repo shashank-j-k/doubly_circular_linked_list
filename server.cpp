@@ -40,7 +40,7 @@ void CList ::InsertAtFirst(int iNo)
     pNewNode = new CNode;
     if(NULL == pNewNode)
     {
-        cout << "Memory Allcation Failed\a\n";
+        cout << "Memory Allocation Failed\a\n";
         return;
     }
 
@@ -48,17 +48,15 @@ void CList ::InsertAtFirst(int iNo)
 
     if(NULL == m_pHead)
     {
-        m_pHead = pNewNode;
         m_pTail = pNewNode;
-        m_pHead->m_pPrev = m_pTail;
-        m_pTail->m_pNext = m_pHead;
-        return;
     }
-
-    pNewNode->m_pNext = m_pHead;
-    m_pHead->m_pPrev = pNewNode;
+    else
+    {
+        pNewNode->m_pNext = m_pHead;
+        m_pHead->m_pPrev = pNewNode;
+    }
     m_pHead = pNewNode;
-    pNewNode->m_pPrev = m_pTail;
+    m_pHead->m_pPrev = m_pTail;
     m_pTail->m_pNext = m_pHead;
 }
 
@@ -423,24 +421,42 @@ void CList ::ReverseDisplay()
 
 void CList ::PhysicalReverse()
 {
-    CNode *pPrev = m_pHead->m_pPrev;
+    if(NULL == m_pHead || m_pHead == m_pTail)
+        return;
+
     CNode *pCurrent = m_pHead;
-    CNode *pNext = m_pHead->m_pNext;
+    CNode *pNext = NULL;
+    m_pHead = m_pTail;
+    m_pTail = m_pHead->m_pNext;
 
     do
     {
         pNext = pCurrent->m_pNext;
-        pCurrent->m_pNext = pPrev;
+        pCurrent->m_pNext = m_pHead;
         pCurrent->m_pPrev = pNext;
-        pPrev = pCurrent;
+        m_pHead = pCurrent;
         pCurrent = pNext;
-    } while(pCurrent != m_pHead);
+    } while(pCurrent != m_pTail);
 
-    m_pHead = pPrev;
-    m_pTail = pNext;
+    m_pTail = pCurrent;
 }
 
 void CList ::DeleteAll()
 {
-    cout << "In DeleteAll\n";
+    if(m_pHead == NULL)
+        return;
+
+    m_pTail->m_pNext = NULL;
+    CNode *pTemp = NULL;
+
+    while (m_pHead != NULL)
+    {
+        pTemp = m_pHead;
+        m_pHead = m_pHead->m_pNext;
+        pTemp->m_pPrev = NULL;
+        pTemp->m_pNext = NULL;
+        delete(pTemp);
+    }
+    pTemp = NULL;
+    cout << "Successfully deleted\n";
 }
